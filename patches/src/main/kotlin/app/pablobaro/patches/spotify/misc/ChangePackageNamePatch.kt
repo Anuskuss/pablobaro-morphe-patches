@@ -48,10 +48,6 @@ val changePackageNamePatch = resourcePatch(
             val manifest = document.getElementsByTagName("manifest").item(0) as Element
             val oldPackageName = manifest.getAttribute("package")
 
-            if (newPackageName == oldPackageName) {
-                throw PatchException("The new package name must differ from \"$oldPackageName\"")
-            }
-
             fun renamed(value: String) =
                 if (value.startsWith("$oldPackageName.")) newPackageName + value.removePrefix(oldPackageName) else value
 
